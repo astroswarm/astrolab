@@ -3,4 +3,4 @@ FROM resin/rpi-raspbian:jessie
 RUN apt-get -y update
 RUN apt-get -y install curl
 
-CMD while curl --request POST --data "" http://localhost:5000/api/heartbeat; do sleep 3; done
+CMD while curl --request POST --data "" http://$BRAIN_HOST/api/heartbeat; do sleep 3; done

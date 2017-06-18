@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.development
     environment:
       BRAIN_HOST: swarm_brain:9292
-      HEARTBEAT_INTERVAL_IN_SECONDS: 5
+      HEARTBEAT_INTERVAL_IN_SECONDS: 30
     depends_on:
       - swarm_brain
   swarm_brain:

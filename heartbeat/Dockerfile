@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM base:latest
 
 RUN apt-get -y update
 RUN apt-get -y install curl

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-if [ $(uname -m) == "x86_64" ]; then
+if [ $(uname -m) = "x86_64" ]; then
   docker pull debian:latest
   docker tag debian:latest base:latest
 elif uname -m | grep "arm" > /dev/null; then

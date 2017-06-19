@@ -14,3 +14,13 @@ This repo creates an environment for developing Astrolab.
 3. Do your work!
 4. Restart your environment with `docker-compose stop` and `docker-compose up`.
 5. Tear down your environment with `docker-compose down`.
+
+## Running the server specs:
+
+`docker-compose run swarm_brain rbenv exec bundle exec rspec spec`
+
+## Notes
+
+### host-data directory
+
+The `mock-host-data` directory contains mock data that is intended to be auto-discovered by the host OS, stored in plaintext files, and mounted in read-only mode inside containers at `/host-data`.

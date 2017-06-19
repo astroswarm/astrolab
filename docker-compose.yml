@@ -19,7 +19,8 @@ services:
       ASTROSWARM_API_HOST: 172.19.0.1:3001
       RACK_ENV: development
     volumes:
-      - ./swarm_brain/:/app
+      - ./mock-host-data:/host-data:ro
+      - ./swarm_brain:/app
       - bundle:/bundle
     ports:
       - "5000:9292"

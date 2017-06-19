@@ -17,6 +17,7 @@ services:
     environment:
       # Get gateway address on container via: ip route show | awk '/^default/ {print $3}'
       ASTROSWARM_API_HOST: 172.19.0.1:3001
+      HOST_DATA_DIR: /host-data
       RACK_ENV: development
     volumes:
       - ./mock-host-data:/host-data:ro

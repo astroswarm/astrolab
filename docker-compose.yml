@@ -5,10 +5,13 @@ services:
       context: ./heartbeat
       dockerfile: Dockerfile
     environment:
-      BRAIN_HOST: swarm_brain:9292
-      HEARTBEAT_INTERVAL_IN_SECONDS: 30
+      BRAIN_WAN_PORT: 5000
+      HEARTBEAT_INTERVAL_IN_SECONDS: 5
+      HOST_DATA_DIR: /host-data
     depends_on:
       - swarm_brain
+    volumes:
+      - ./host-data:/host-data:ro
   swarm_brain:
     build:
       context: ./swarm_brain
@@ -20,7 +23,7 @@ services:
       HOST_DATA_DIR: /host-data
       RACK_ENV: development
     volumes:
-      - ./mock-host-data:/host-data:ro
+      - ./host-data:/host-data:ro
       - ./swarm_brain:/app
       - bundle:/bundle
     ports:

@@ -1,5 +1,12 @@
 version: '3'
 services:
+  portainer:
+    entrypoint: /portainer --host unix:///var/run/docker.sock --no-auth
+    image: portainer/portainer
+    ports:
+      - "5001:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   heartbeat:
     build:
       args:

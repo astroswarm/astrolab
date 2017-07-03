@@ -37,6 +37,7 @@ services:
       - ./host-data:/host-data:ro
       - ./swarm_brain:/app
       - bundle:/bundle
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "5000:9292"
 volumes:

@@ -40,5 +40,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - "5000:9292"
+  localtunnel:
+    depends_on:
+      - swarm_brain
+    environment:
+      HTTP_HOST: swarm_brain
+      HTTP_PORT: 9292
+    image: astroswarm/localtunnel_client-x86_64
+    restart: unless-stopped
 volumes:
   bundle:

@@ -23,4 +23,4 @@ This repo creates an environment for developing Astrolab.
 
 ### host-data directory
 
-The `mock-host-data` directory contains mock data that is intended to be auto-discovered by the host OS, stored in plaintext files, and mounted in read-only mode inside containers at `/host-data`.
+The `host-data` directory contains mock data that is intended to be auto-discovered by the host OS, stored in plaintext files, and mounted in read-only mode inside containers at `/host-data`.

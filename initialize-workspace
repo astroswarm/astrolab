@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 git clone git@github.com:astroswarm/heartbeat.git
-git clone git@github.com:astroswarm/swarm_brain.git
+git clone git@github.com:astroswarm/brain.git

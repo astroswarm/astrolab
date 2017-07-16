@@ -17,7 +17,7 @@ This repo creates an environment for developing Astrolab.
 
 ## Running the server specs:
 
-`docker-compose run brain rbenv exec bundle exec rspec spec`
+`docker-compose run -e RACK_ENV=test brain rbenv exec bundle exec rspec spec`
 
 ## Notes
 

@@ -38,6 +38,7 @@ services:
       - ./brain:/app
       - bundle:/bundle
       - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp:/mnt/shared
     ports:
       - "5000:9292"
   localtunnel:

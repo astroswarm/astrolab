@@ -21,6 +21,16 @@ services:
       - brain
     volumes:
       - ./host-data:/host-data:ro
+  file_manager:
+    build:
+      args:
+        ARCH: x86_64
+      context: ./file_manager
+      dockerfile: Dockerfile
+    volumes:
+      - /tmp:/mnt/shared
+    ports:
+      - "5002:8080"
   brain:
     build:
       args:

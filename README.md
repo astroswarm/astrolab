@@ -1,6 +1,6 @@
 # Astrolab Workspace
 
-This repo creates an environment for developing Astrolab.
+This repo manages Astrolab services via docker-compose.
  
 ## Requirements
 
@@ -9,11 +9,11 @@ This repo creates an environment for developing Astrolab.
 
 ## Getting Started
 
-1. Initialize your workspace with: `./initialize-workspace`.
-2. Create your environment with `docker-compose up --build`.
+1. Run `source <development|production>.sh` to load the correct environment.
+2. Create your containers with `docker-compose create --build`.
 3. Do your work!
-4. Restart your environment with `docker-compose stop` and `docker-compose up`.
-5. Tear down your environment with `docker-compose down`.
+4. Restart your containers with `docker-compose stop` and `docker-compose up`.
+5. Tear down your containers and related infrastructure with `docker-compose down`.
 
 ## Running the server specs:
 

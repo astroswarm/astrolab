@@ -1,4 +1,6 @@
-FROM base:latest
+ARG ARCH
+
+FROM astroswarm/base-$ARCH:latest
 
 RUN apt-get -y update
 RUN apt-get -y install curl

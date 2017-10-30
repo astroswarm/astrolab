@@ -54,7 +54,7 @@ services:
       HOST_DATA_DIR: /host-data
       RACK_ENV: ${RACK_ENV}
     volumes:
-      - /var/log/syslog:/mnt/host/var/log/syslog:ro
+      - ${SYSLOG_PATH}:/mnt/host/var/log/syslog:ro
       - ${HOST_DATA_DIR}:/host-data:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - ${SHARED_DIR}:/mnt/shared

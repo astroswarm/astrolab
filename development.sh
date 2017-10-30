@@ -8,5 +8,5 @@ export RACK_ENV=development
 export SHARED_DIR=/tmp
 export SYSLOG_PATH=/tmp/syslog
 
-echo -n "172.18.0.1" > $HOST_DATA_DIR/lan_ip_address
+echo -n $(ipconfig getifaddr en0) > $HOST_DATA_DIR/lan_ip_address
 touch $SYSLOG_PATH

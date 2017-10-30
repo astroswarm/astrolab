@@ -10,9 +10,9 @@ This repo manages Astrolab services via docker-compose.
 ## Getting Started
 
 1. Run `source <development|production>.sh` to load the correct environment.
-2. Create your containers with `docker-compose create --build`.
+2. Create your containers with `docker-compose up --build`.
 3. Do your work!
-4. Restart your containers with `docker-compose stop` and `docker-compose up`.
+4. Restart your containers with `docker-compose stop` and `docker-compose up --build`.
 5. Tear down your containers and related infrastructure with `docker-compose down`.
 
 ## Running the server specs:

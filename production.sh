@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-export ARCH=armv7l
 export ASTROSWARM_API_HOST=api.astroswarm.com
 export BRAIN_CONTEXT=https://github.com/astroswarm/brain.git
 export HEARTBEAT_CONTEXT=https://github.com/astroswarm/heartbeat.git

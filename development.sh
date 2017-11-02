@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
 
-export ARCH=x86_64
 export ASTROSWARM_API_HOST=172.19.0.1:3001
 export BRAIN_CONTEXT=../brain
 export HEARTBEAT_CONTEXT=../heartbeat

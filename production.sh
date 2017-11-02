@@ -2,6 +2,8 @@
 
 export ARCH=armv7l
 export ASTROSWARM_API_HOST=api.astroswarm.com
+export BRAIN_CONTEXT=https://github.com/astroswarm/brain.git
+export HEARTBEAT_CONTEXT=https://github.com/astroswarm/heartbeat.git
 export HOST_DATA_DIR=/host-data
 export PORTAINER_DATA_DIR=/mnt/shared/portainer/data
 export RACK_ENV=production

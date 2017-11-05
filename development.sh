@@ -7,7 +7,6 @@ export HOST_DATA_DIR=/tmp
 export PORTAINER_DATA_DIR=/tmp
 export RACK_ENV=development
 export SHARED_DIR=/tmp
-export SYSLOG_PATH=/tmp/syslog
+export SYSLOG_PATH=/private/var/log/system.log
 
 echo -n $(ipconfig getifaddr en0) > $HOST_DATA_DIR/lan_ip_address
-echo "Dummy log entry" >> $SYSLOG_PATH

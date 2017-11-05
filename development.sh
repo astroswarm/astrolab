@@ -10,4 +10,4 @@ export SHARED_DIR=/tmp
 export SYSLOG_PATH=/tmp/syslog
 
 echo -n $(ipconfig getifaddr en0) > $HOST_DATA_DIR/lan_ip_address
-touch $SYSLOG_PATH
+echo "Dummy log entry" >> $SYSLOG_PATH

@@ -8,5 +8,7 @@ export PORTAINER_DATA_DIR=/tmp
 export RACK_ENV=development
 export SHARED_DIR=/tmp
 export SYSLOG_PATH=/private/var/log/system.log
+export WPA_SUPPLICANT_PATH=/tmp/wpa_supplicant.conf
 
+touch $WPA_SUPPLICANT_PATH
 echo -n $(ipconfig getifaddr en0) > $HOST_DATA_DIR/lan_ip_address

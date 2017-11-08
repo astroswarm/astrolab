@@ -49,6 +49,7 @@ services:
       RACK_ENV: ${RACK_ENV}
     volumes:
       - ${SYSLOG_PATH}:/mnt/host/var/log/syslog:ro
+      - ${WPA_SUPPLICANT_PATH}:/mnt/host/etc/wpa_supplicant/wpa_supplicant.conf
       - ${HOST_DATA_DIR}:/host-data:ro
       - /var/run/docker.sock:/var/run/docker.sock
       - ${SHARED_DIR}:/mnt/shared

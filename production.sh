@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 export ASTROSWARM_API_HOST=api.astroswarm.com
 export BRAIN_CONTEXT=https://github.com/astroswarm/brain.git
@@ -13,4 +13,8 @@ export PASTEBINIT_URI=http://pastebin.astroswarm.com/
 export PASTEBINIT_USERNAME=astro
 export PASTEBINIT_PASS=swarm
 export BRAIN_GO_VERSION=1.10
-export BRAIN_GO_ARCH=armv6l
+if [ "$(uname -m)" == "x86_64" ] ; then
+  export BRAIN_GO_ARCH=amd64
+elif [ "$(uname -m)" == "armv7l" ] ; then
+  export BRAIN_GO_ARCH=armv6l
+fi

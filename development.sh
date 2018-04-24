@@ -2,6 +2,7 @@
 
 export ASTROSWARM_API_HOST=172.19.0.1:3001
 export BRAIN_CONTEXT=../brain
+export FRONTEND_CONTEXT=../frontend
 export HEARTBEAT_CONTEXT=../heartbeat
 export HOST_DATA_DIR=/tmp
 export PORTAINER_DATA_DIR=/tmp

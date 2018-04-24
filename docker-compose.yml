@@ -33,7 +33,7 @@ services:
     depends_on:
       - brain
     environment:
-      BRAIN_WAN_PORT: 5000
+      BRAIN_WAN_PORT: 5003
       HEARTBEAT_INTERVAL_IN_SECONDS: 5
       HOST_DATA_DIR: /host-data
     volumes:
@@ -60,4 +60,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${SHARED_DIR}:/mnt/shared
     ports:
-      - "5000:9292"
+      - "5003:9292"
+  frontend:
+    build:
+      context: ${FRONTEND_CONTEXT}
+      dockerfile: Dockerfile.development
+    volumes:
+      - ${FRONTEND_CONTEXT}:/app
+    ports:
+      - "5000:8000"   # HTTP server

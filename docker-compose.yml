@@ -64,8 +64,6 @@ services:
   frontend:
     build:
       context: ${FRONTEND_CONTEXT}
-      dockerfile: Dockerfile.development
-    volumes:
-      - ${FRONTEND_CONTEXT}:/app
+      dockerfile: ${FRONTEND_DOCKERFILE}
     ports:
-      - "5000:8000"   # HTTP server
+      - "5000:80"   # HTTP server

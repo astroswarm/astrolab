@@ -3,6 +3,7 @@
 export ASTROSWARM_API_HOST=api.astroswarm.com
 export BRAIN_CONTEXT=https://github.com/astroswarm/brain.git
 export FRONTEND_CONTEXT=https://github.com/astroswarm/frontend.git
+export FRONTEND_DOCKERFILE=Dockerfile.production
 export HEARTBEAT_CONTEXT=https://github.com/astroswarm/heartbeat.git
 export HOST_DATA_DIR=/host-data
 export PORTAINER_DATA_DIR=/mnt/shared/portainer/data

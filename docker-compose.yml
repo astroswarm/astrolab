@@ -34,6 +34,7 @@ services:
       BRAIN_WAN_PORT: 5003
       HEARTBEAT_INTERVAL_IN_SECONDS: 5
       HOST_DATA_DIR: /host-data
+    restart: unless-stopped
     volumes:
       - ${HOST_DATA_DIR}:/host-data:ro
   brain:
@@ -47,6 +48,7 @@ services:
       PASTEBINIT_PASS: ${PASTEBINIT_PASS}
       PASTEBINIT_URI: ${PASTEBINIT_URI}
       RACK_ENV: ${RACK_ENV}
+    restart: unless-stopped
     volumes:
       - ${SYSLOG_PATH}:/mnt/host/var/log/syslog:ro
       - ${WPA_SUPPLICANT_PATH}:/mnt/host/etc/wpa_supplicant/wpa_supplicant.conf
@@ -59,3 +61,4 @@ services:
     image: astroswarm/frontend:latest
     ports:
       - "5000:80"   # HTTP server
+    restart: unless-stopped

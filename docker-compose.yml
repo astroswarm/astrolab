@@ -50,7 +50,6 @@ services:
       RACK_ENV: ${RACK_ENV}
     restart: unless-stopped
     volumes:
-      - ${DOCKER_CONTAINERS_DIR}:/mnt/host/var/lib/docker/containers:ro
       - ${SYSLOG_PATH}:/mnt/host/var/log/syslog:ro
       - ${WPA_SUPPLICANT_PATH}:/mnt/host/etc/wpa_supplicant/wpa_supplicant.conf
       - ${HOST_DATA_DIR}:/host-data:ro

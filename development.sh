@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export ASTROSWARM_API_HOST=172.19.0.1:3001
+export ASTROSWARM_API_HOST=$(ipconfig getifaddr en0):3001
 export HOST_DATA_DIR=/tmp
 export PORTAINER_DATA_DIR=/tmp
 export RACK_ENV=development

@@ -1,0 +1,9 @@
+[submodule "brain"]
+	path = brain
+	url = ../brain
+[submodule "frontend"]
+	path = frontend
+	url = ../frontend
+[submodule "heartbeat"]
+	path = heartbeat
+	url = ../heartbeat

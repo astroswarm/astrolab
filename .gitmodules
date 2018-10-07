@@ -4,6 +4,3 @@
 [submodule "frontend"]
 	path = frontend
 	url = ../frontend
-[submodule "heartbeat"]
-	path = heartbeat
-	url = ../heartbeat

@@ -1,0 +1,13 @@
+---
+image: "astroswarm/heartbeat:latest"
+manifests:
+  -
+    image: "astroswarm/heartbeat-x86_64:latest"
+    platform:
+      architecture: amd64
+      os: linux
+  -
+    image: "astroswarm/heartbeat-armv7l:latest"
+    platform:
+      architecture: arm
+      os: linux

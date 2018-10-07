@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+set -e
+
+ARCH=`uname -m`
+echo "Detected architecture: $ARCH."
+
+echo "Setting version."
+VERSION=`date +%Y%m%d`
+echo "Version is $VERSION."
+
+docker build \
+  --tag astroswarm/heartbeat-$ARCH:$VERSION \
+  --tag astroswarm/heartbeat-$ARCH:latest \
+ ./
+
+echo "Would you like to push this image now (y/n)?"
+read release
+if [ $release = "y" ]; then
+  echo "Pushing to AstroSwarm registry."
+  docker push astroswarm/heartbeat-$ARCH:$VERSION
+  docker push astroswarm/heartbeat-$ARCH:latest
+fi

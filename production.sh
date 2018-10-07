@@ -11,4 +11,4 @@ export ETH_ADDRESS_FILE=/sys/class/net/eth0/address
 export PASTEBINIT_URI=http://pastebin.astroswarm.com/
 export PASTEBINIT_USERNAME=astro
 export PASTEBINIT_PASS=swarm
-
+export BRAIN_GO_ARCH=armv6l

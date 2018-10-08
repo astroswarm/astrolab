@@ -12,3 +12,4 @@ export PASTEBINIT_URI=http://pastebin.astroswarm.com/
 export PASTEBINIT_USERNAME=astro
 export PASTEBINIT_PASS=swarm
 export BRAIN_GO_ARCH=armv6l
+export ARCH="$(uname -m)"

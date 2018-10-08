@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Load correct environment
+if [ "$(uname -m)" == "x86_64" ] ; then
+  source development.sh
+elif [ "$(uname -m)" == "armv7l" ] ; then
+  source production.sh
+fi
+
+# Ensure our build artifacts are up to date
+docker-compose build
+
+# Tag each image with today's date
+VERSION=`date +%Y%m%d`
+images=(brain frontend heartbeat)
+for i in "${images[@]}"
+do
+  docker tag "astroswarm/${i}-${ARCH}:latest" "astroswarm/${i}-${ARCH}:${VERSION}"
+done
+
+# Push image with date-specific and "latest" tags
+for i in "${images[@]}"
+do
+  docker push "astroswarm/${i}-${ARCH}:latest"
+  docker push "astroswarm/${i}-${ARCH}:${VERSION}"
+done

@@ -13,6 +13,7 @@ export PASTEBINIT_USERNAME=astro
 export PASTEBINIT_PASS=swarm
 export BRAIN_GO_ARCH=amd64
 export ARCH="$(uname -m)"
+export FRONTEND_DOCKERFILE=Dockerfile.development
 
 touch $WPA_SUPPLICANT_PATH
 echo -n $(ipconfig getifaddr en0) > $HOST_DATA_DIR/lan_ip_address

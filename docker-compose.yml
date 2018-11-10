@@ -74,3 +74,30 @@ services:
     ports:
       - "5000:80"   # HTTP server
     restart: unless-stopped
+  phd2_xapplication:
+    image: astroswarm/phd2:latest
+    ports:
+      - "5900/tcp"
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - "/dev/bus/usb:/dev/bus/usb"
+      - "${SHARED_DIR}/phd2/shared:/shared"
+  phd2_websockify:
+    depends_on:
+      - phd2_xapplication
+    environment:
+      VNC_HOST: phd2_xapplication
+      VNC_PORT: 5900
+    image: astroswarm/websockify:latest
+    ports:
+      - "6900/tcp"
+    restart: unless-stopped
+  phd2_localtunnel:
+    depends_on:
+      - phd2_websockify
+    environment:
+      HTTP_HOST: phd2_websockify
+      HTTP_PORT: 6900
+    image: astroswarm/localtunnel_client:latest
+    restart: unless-stopped

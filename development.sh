@@ -18,3 +18,5 @@ export FRONTEND_DOCKERFILE=Dockerfile.development
 touch $WPA_SUPPLICANT_PATH
 echo -n $(ipconfig getifaddr en0) > $HOST_DATA_DIR/lan_ip_address
 echo -n $(ifconfig en0 | awk '/ether/{print $2}' | sed s/\://g) > $ETH_ADDRESS_FILE
+
+mkdir -p $SHARED_DIR/phd2/shared

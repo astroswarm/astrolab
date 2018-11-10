@@ -36,7 +36,7 @@ view ( start_application_msg, stop_application_msg, clean_application_msg ) =
                 , Html.Attributes.target "_blank"
                 ]
                 [ Html.text "Click here" ]
-            , Html.text " for an example of how to do this."
+            , Html.text " to see how we built PHD2 for the Astrolab."
             ]
         , Html.p [] [ Html.text "For now, we recommend using our supported applications. Click on a template below to get started. The first time you do this, the application will be downloaded, installed, and then run. It will not need to be redownloaded or reinstalled on subsequent runs." ]
         , Html.h2 [] [ Html.text "Available Applications" ]

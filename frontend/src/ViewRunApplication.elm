@@ -1,14 +1,10 @@
 module ViewRunApplication exposing (view, RunningApplication)
 
+import Bootstrap.Button
+import Bootstrap.Form
+import Bootstrap.Form.Input
 import Html
 import Html.Attributes
-import Html.Events
-
-
-type alias ApplicationTemplate =
-    { name : String
-    , docker_image : String
-    }
 
 
 type alias RunningApplication =
@@ -18,15 +14,10 @@ type alias RunningApplication =
     }
 
 
-applicationTemplates : List ApplicationTemplate
-applicationTemplates =
-    [ ApplicationTemplate "PHD Guiding" "astroswarm/phd2:latest"
-    , ApplicationTemplate "Open Sky Imager" "astroswarm/openskyimager:latest"
-    ]
-
-
-view : ( String -> msg, String -> msg, String -> msg ) -> Html.Html msg
-view ( start_application_msg, stop_application_msg, clean_application_msg ) =
+view :
+    ( String -> msg, String -> msg, String -> msg, String -> msg, { a | runCustomApplicationImage : String } )
+    -> Html.Html msg
+view ( start_application_msg, stop_application_msg, clean_application_msg, set_custom_application_image_msg, model ) =
     Html.div []
         [ Html.h1 [] [ Html.text "Run a Custom Application..." ]
         , Html.p []
@@ -38,32 +29,37 @@ view ( start_application_msg, stop_application_msg, clean_application_msg ) =
                 [ Html.text "Click here" ]
             , Html.text " to see how we built PHD2 for the Astrolab."
             ]
-        , Html.p [] [ Html.text "For now, we recommend using our supported applications. Click on a template below to get started. The first time you do this, the application will be downloaded, installed, and then run. It will not need to be redownloaded or reinstalled on subsequent runs." ]
-        , Html.h2 [] [ Html.text "Available Applications" ]
-        , Html.ul []
-            (List.map
-                (\application ->
-                    Html.li []
-                        [ Html.text (application.name ++ ": ")
-                        , Html.a
-                            [ Html.Attributes.href "#run-application"
-                            , Html.Events.onClick (start_application_msg application.docker_image)
-                            ]
-                            [ Html.text "Start" ]
-                        , Html.text " - "
-                        , Html.a
-                            [ Html.Attributes.href "#run-application"
-                            , Html.Events.onClick (stop_application_msg application.docker_image)
-                            ]
-                            [ Html.text "Stop" ]
-                        , Html.text " - "
-                        , Html.a
-                            [ Html.Attributes.href "#run-application"
-                            , Html.Events.onClick (clean_application_msg application.docker_image)
-                            ]
-                            [ Html.text "Clean" ]
-                        ]
-                )
-                applicationTemplates
-            )
+        , Html.p [] [ Html.text "To run a custom application, enter its Docker Hub image name below. The first time you start it, the application will be downloaded and installed." ]
+        , Bootstrap.Form.form []
+            [ Bootstrap.Form.Input.text
+                [ Bootstrap.Form.Input.id "image"
+                , Bootstrap.Form.Input.placeholder "repository/image:tag"
+                , Bootstrap.Form.Input.value model.runCustomApplicationImage
+                , Bootstrap.Form.Input.onInput set_custom_application_image_msg
+                ]
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.primary
+                , Bootstrap.Button.disabled (model.runCustomApplicationImage == "")
+                , Bootstrap.Button.onClick (start_application_msg model.runCustomApplicationImage)
+                ]
+                [ Html.text
+                    "Start"
+                ]
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.secondary
+                , Bootstrap.Button.disabled (model.runCustomApplicationImage == "")
+                , Bootstrap.Button.onClick (stop_application_msg model.runCustomApplicationImage)
+                ]
+                [ Html.text
+                    "Stop"
+                ]
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.danger
+                , Bootstrap.Button.disabled (model.runCustomApplicationImage == "")
+                , Bootstrap.Button.onClick (clean_application_msg model.runCustomApplicationImage)
+                ]
+                [ Html.text
+                    "Clean"
+                ]
+            ]
         ]

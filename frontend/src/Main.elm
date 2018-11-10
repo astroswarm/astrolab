@@ -91,6 +91,7 @@ type alias Model =
     , uploadLogsInFlight : Bool
     , route : Route
     , brainApiHost : String
+    , runCustomApplicationImage : String
     }
 
 
@@ -123,6 +124,7 @@ initialState location =
           , uploadLogsInFlight = False
           , route = parseLocation location
           , brainApiHost = Configurator.determineBrainHost location
+          , runCustomApplicationImage = ""
           }
         , navbarCmd
         )
@@ -157,6 +159,7 @@ type Msg
     | WifiNetworksGotten (Result Http.Error (List String))
     | UploadLogs
     | UploadLogsModalMsg Bootstrap.Modal.State
+    | RunCustomApplicationImage String
 
 
 applicationFromName : String -> List ViewRunApplication.RunningApplication -> Maybe ViewRunApplication.RunningApplication
@@ -312,6 +315,9 @@ update message model =
 
         AddWifiNetworkSetFormSsid ssid ->
             ( { model | addWifiNetworkFormSsid = ssid }, Cmd.none )
+
+        RunCustomApplicationImage image ->
+            ( { model | runCustomApplicationImage = image }, Cmd.none )
 
         AddWifiNetworkSetFormKey key ->
             ( { model | addWifiNetworkFormKey = key }, Cmd.none )
@@ -565,7 +571,7 @@ view model =
                     ViewAbout.view
 
                 RunApplicationRoute ->
-                    ViewRunApplication.view ( StartApplication, StopApplication, CleanApplication )
+                    ViewRunApplication.view ( StartApplication, StopApplication, CleanApplication, RunCustomApplicationImage, model )
 
                 ApplicationRoute running_application ->
                     (case (applicationFromName running_application model.runningApplications) of

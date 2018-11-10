@@ -2,7 +2,8 @@ version: '3'
 services:
   portainer:
     entrypoint: /portainer --host unix:///var/run/docker.sock --no-auth
-    image: portainer/portainer
+    # Use develop branch until https://github.com/portainer/portainer/issues/2279 is released.
+    image: portainer/portainer:develop
     ports:
       - "0.0.0.0:5001:9000"
     restart: unless-stopped

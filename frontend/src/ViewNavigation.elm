@@ -40,7 +40,7 @@ view ( navbar_msg, model, application_select_msg, web_application_select_msg, co
                             [ ([ Bootstrap.Navbar.dropdownItem
                                     [ Html.Attributes.href "#run-application"
                                     ]
-                                    [ Html.text "Run an application..." ]
+                                    [ Html.text "Run a custom application..." ]
                                ]
                               )
                             , (List.map

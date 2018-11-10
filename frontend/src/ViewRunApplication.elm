@@ -28,7 +28,7 @@ applicationTemplates =
 view : ( String -> msg, String -> msg, String -> msg ) -> Html.Html msg
 view ( start_application_msg, stop_application_msg, clean_application_msg ) =
     Html.div []
-        [ Html.h1 [] [ Html.text "Run an Application..." ]
+        [ Html.h1 [] [ Html.text "Run a Custom Application..." ]
         , Html.p []
             [ Html.text "Any ARM-compatible Linux application can be made to run on your Astrolab! "
             , Html.a

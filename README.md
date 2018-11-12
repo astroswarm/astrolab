@@ -34,7 +34,7 @@ docker-compose -f docker-compose.yml -f docker-compose.development-overrides.yml
 
 If integration specs bomb, you can cleanup integration containers with:
 ```
-docker ps | grep phd2 | awk '{print $1}' | xargs docker rm -f
+docker ps -a | grep phd2 | awk '{print $1}' | xargs docker rm -f
 ```
 
 ## Fixing connectivity between a development astrolab and a development server

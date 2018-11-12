@@ -15,6 +15,13 @@ This repo manages Astrolab services via docker-compose.
 4. Restart your containers with `docker-compose stop` and `docker-compose up --build`.
 5. Tear down your containers and related infrastructure with `docker-compose down`.
 
+## Running brain specs
+
+```
+source development.rb
+docker-compose run --rm -e RACK_ENV=test brain rbenv exec bundle exec rspec spec
+```
+
 ## Fixing connectivity between a development astrolab and a development server
 
 In some network configurations, you won't be able to access your host IP address from within a container. If this is the case, you can access your host through the Docker gateway. You'll find this is necessary when you run `docker-compose up` and don't see any responses from the heartbeat service. Rectify as follows:

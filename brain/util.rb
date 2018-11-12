@@ -119,14 +119,15 @@ class Util
       Docker::Container.all(all: true, filters: { name: ["xapplication"], status: ["running"] }.to_json).each do |xapplication_container|
         application_name = xapplication_container.info["Names"].first.split('/')[1].split('_')[0]
 
-        websockify_container = Docker::Container.all(all: true, filters: { label: ["com.docker.compose.project=#{application_name}", "com.docker.compose.service=websockify"] }.to_json).first
+        websockify_container = Docker::Container.all(all: true, filters: { label: ["com.docker.compose.project=#{application_name}", "com.docker.compose.service=websockify"]}.to_json).first
         websockify_public_port =
           if websockify_container.nil?
             nil
           else
-            websockify_container.info["Ports"].keep_if{
+            hash_with_port_mapping = websockify_container.info["Ports"].keep_if{
               |hash| hash["PrivatePort"] == EXPECTED_WEBSOCKIFY_PORT
-            }.first["PublicPort"]
+            }.first
+            hash_with_port_mapping ? hash_with_port_mapping["PublicPort"] : nil
           end
 
         xapplication_container = Docker::Container.all(all: true, filters: { label: ["com.docker.compose.project=#{application_name}", "com.docker.compose.service=xapplication"] }.to_json).first
@@ -167,7 +168,7 @@ class Util
     end
 
     def get_localtunnel_endpoint(compose_project)
-      localtunnel_container = Docker::Container.all(all: true, filters: { label: ["com.docker.compose.project=#{compose_project}", "com.docker.compose.service=localtunnel"] }.to_json).first
+      localtunnel_container = Docker::Container.all(all: true, filters: { label: ["com.docker.compose.project=#{compose_project}", "com.docker.compose.service=localtunnel"], status: ["running"] }.to_json).first
       if localtunnel_container
         localtunnel_name = localtunnel_container.info["Names"].first.split('/')[1]
         HTTParty.get("http://#{localtunnel_name}:#{LOCALTUNNEL_ENDPOINT_EXPOSURE_PORT}").body.strip

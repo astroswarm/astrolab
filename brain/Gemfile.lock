@@ -14,7 +14,7 @@ GEM
     hashdiff (0.3.4)
     httparty (0.15.5)
       multi_xml (>= 0.5.2)
-    multi_json (1.12.1)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     mustermann (1.0.0)
     public_suffix (2.0.5)

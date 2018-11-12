@@ -21,17 +21,29 @@ view :
     -> Html.Html msg
 view ( start_application_msg, stop_application_msg, clean_application_msg, set_custom_application_image_msg, model ) =
     Html.div []
-        [ Html.h1 [] [ Html.text "Run a Custom Application..." ]
+        [ Html.h1 [] [ Html.text "Manage Applications" ]
         , Html.p []
-            [ Html.text "Any ARM-compatible Linux application can be made to run on your Astrolab! "
+            [ Html.text "Any ARM-compatible Linux application can run on your Astrolab! "
             , Html.a
                 [ Html.Attributes.href "https://github.com/astroswarm/phd2_builder"
                 , Html.Attributes.target "_blank"
                 ]
                 [ Html.text "Click here" ]
-            , Html.text " to see how we built PHD2 for the Astrolab."
+            , Html.text " to see how we build PHD2 for it."
             ]
-        , Html.p [] [ Html.text "To run a custom application, enter its Docker Hub image name below." ]
+        , Html.p []
+            [ Html.text "To run an application, enter its Docker Hub image name below, or use a template:"
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.roleLink
+                , Bootstrap.Button.onClick (set_custom_application_image_msg "astroswarm/phd2:latest")
+                ]
+                [ Html.text "PHD2" ]
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.roleLink
+                , Bootstrap.Button.onClick (set_custom_application_image_msg "astroswarm/openskyimager:latest")
+                ]
+                [ Html.text "Open Sky Imager" ]
+            ]
         , Bootstrap.Form.form []
             [ Bootstrap.Form.group []
                 ([ Bootstrap.Grid.container
@@ -82,18 +94,5 @@ view ( start_application_msg, stop_application_msg, clean_application_msg, set_c
                     ]
                  ]
                 )
-            ]
-        , Html.p []
-            [ Html.text "Click to load a supported image  : "
-            , Bootstrap.Button.button
-                [ Bootstrap.Button.info
-                , Bootstrap.Button.onClick (set_custom_application_image_msg "astroswarm/phd2:latest")
-                ]
-                [ Html.text "PHD2" ]
-            , Bootstrap.Button.button
-                [ Bootstrap.Button.info
-                , Bootstrap.Button.onClick (set_custom_application_image_msg "astroswarm/openskyimager:latest")
-                ]
-                [ Html.text "Open Sky Imager" ]
             ]
         ]

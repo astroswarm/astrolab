@@ -83,4 +83,17 @@ view ( start_application_msg, stop_application_msg, clean_application_msg, set_c
                  ]
                 )
             ]
+        , Html.p []
+            [ Html.text "Click to load a supported image  : "
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.info
+                , Bootstrap.Button.onClick (set_custom_application_image_msg "astroswarm/phd2:latest")
+                ]
+                [ Html.text "PHD2" ]
+            , Bootstrap.Button.button
+                [ Bootstrap.Button.info
+                , Bootstrap.Button.onClick (set_custom_application_image_msg "astroswarm/openskyimager:latest")
+                ]
+                [ Html.text "Open Sky Imager" ]
+            ]
         ]

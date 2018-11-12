@@ -1,5 +1,8 @@
 version: '3'
 services:
+  brain:
+    volumes:
+      - ./brain:/app
   frontend:
     volumes:
       - ./frontend:/app
